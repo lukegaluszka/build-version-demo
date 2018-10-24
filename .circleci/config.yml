@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: node setup and dependencies
+          command: |
+            CI=false
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm install 9 && npm install -g yarn
+            yarn && yarn test
+      - run:
+          name: sem-ver
+          when: on_success
+          ###
+          #  What branch should be the base of sem-ver. Master is the default.
+          ###
+          command: |
+            if [[ "${CIRCLE_BRANCH}" == "master" ]] ; then
+              export NVM_DIR="/opt/circleci/.nvm"
+              [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+              nvm install 9 && npm run semantic-release
+            fi
+workflows:
+  version: 2
+  test_and_release:
+    jobs:
+      - build
