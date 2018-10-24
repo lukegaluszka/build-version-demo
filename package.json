@@ -117,6 +117,7 @@
     ]
   },
   "release": {
+    "branch": "release",
     "dryRun": false,
     "getLastRelease": "last-release-git",
     "verifyConditions": "condition-circle",

@@ -19,7 +19,7 @@ jobs:
           #  What branch should be the base of sem-ver. Master is the default.
           ###
           command: |
-            if [[ "${CIRCLE_BRANCH}" == "master" ]] ; then
+            if [[ "${CIRCLE_BRANCH}" == "release" ]] ; then
               export NVM_DIR="/opt/circleci/.nvm"
               [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
               nvm install 9 && npm run semantic-release
