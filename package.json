@@ -2,6 +2,7 @@
   "name": "build-version-demo",
   "version": "0.0.0-semantically-released",
   "private": true,
+  "repository": "https://github.com/lukegaluszka/build-version-demo.git",
   "devDependencies": {
     "semantic-release": "^15.10.3",
     "last-release-git": "^0.0.3",
@@ -117,6 +118,7 @@
     ]
   },
   "release": {
+    "branch": "release",
     "dryRun": false,
     "getLastRelease": "last-release-git",
     "verifyConditions": "condition-circle",
